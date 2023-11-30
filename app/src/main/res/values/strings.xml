@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">PlacarTenis</string>
+    <string name="app_name">Placar Tênis</string>
+    <string name="semPerLigar">Sua aplicação não tem permissão para ligar</string>
+    <string name="semPerLoca">Sua aplicação não tem acesso à localização</string>
 </resources>

@@ -1,6 +1,7 @@
 package ufc.smd.placar_tenis
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -109,10 +110,9 @@ class PlacarActivity : AppCompatActivity() {
             var placarAntigo:Placar=oos.readObject() as Placar
             Log.v("SMD26",placar.resultado)
         }
+
+        openPreviusGames(v)
     }
-
-
-
 
     fun ultimoJogos () {
         val sharedFilename = "PreviousGames"
@@ -125,6 +125,13 @@ class PlacarActivity : AppCompatActivity() {
             var prevPlacar:Placar = oos.readObject() as Placar
             Log.v("PDM22", "Jogo Salvo:"+ prevPlacar.resultado)
         }
+    }
+
+    fun openPreviusGames(v: View) {
+        val intent = Intent(this, PreviousGamesActivity::class.java).apply {
+
+        }
+        startActivity(intent)
 
     }
 }

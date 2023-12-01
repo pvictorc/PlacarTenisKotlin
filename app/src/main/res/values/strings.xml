@@ -2,4 +2,6 @@
     <string name="app_name">Placar Tênis</string>
     <string name="semPerLigar">Sua aplicação não tem permissão para ligar</string>
     <string name="semPerLoca">Sua aplicação não tem acesso à localização</string>
+    <string name="permission">Permissões</string>
+    <string name="txt_permissions">Favor autorizar as permissões abaixo para o correto funcionamento da aplicação.</string>
 </resources>

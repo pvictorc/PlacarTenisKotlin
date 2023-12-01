@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_margin="10dp"
     android:background="@drawable/tenis_court"
-    app:cardElevation="6dp">
+    app:cardBackgroundColor="#99FFFFFF"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:id="@+id/lnCell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="6dp">
 
         <ImageView
             android:id="@+id/imageview"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/ic_action_name" />
 
         <LinearLayout
@@ -29,6 +30,7 @@
                 android:id="@+id/tvNomePartida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
                 android:text="Nome da Partida"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -37,6 +39,7 @@
                 android:id="@+id/tvResultadoJogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
                 android:text="Resultado do Jogo"
                 android:textSize="20sp"
                 android:textStyle="bold" />

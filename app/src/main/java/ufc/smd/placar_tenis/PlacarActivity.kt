@@ -14,54 +14,131 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.getSystemService
 import data.Placar
-import ufc.smd.placar_tenis.R
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets
+import java.util.ArrayList
 
 class PlacarActivity : AppCompatActivity() {
     lateinit var placar:Placar
 //    lateinit var pontos1,pontos2: int
     lateinit var tvResultadoJogo: TextView
     var game = 0
-    var strResultadoJogo = ""
+    val listaPontos = arrayOf("00","15","30","40","AD","WI")
+    var pontos1 = 0
+    var pontos2 = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_placar)
+        var pontos1 = 0
+        var pontos2 = 0
         placar= getIntent().getExtras()?.getSerializable("placar") as Placar
-//         strResultadoJogo <String> = findViewById(R.id.tvPontuacaoJogador1)
+
         //Mudar o nome da partida
         val tvNomePartida=findViewById(R.id.tvNomePartida) as TextView
         tvNomePartida.text=placar.nome_partida
         ultimoJogos()
     }
 
-    fun alteraPlacar1 (v:View){
-        var tvPontosJogador1 = findViewById<TextView>(R.id.tvPontuacaoJogador1)
-        var pontosJogador1 = tvPontosJogador1.text.toString().toInt()
-        pontosJogador1++
-        var tvPontosJogador2 = findViewById<TextView>(R.id.tvPontuacaoJogador2)
-        var pontosJogador2 = tvPontosJogador2.text.toString().toInt()
+    fun alteraSets1 (v:View){
+        var tvSetsJoga1 = findViewById<TextView>(R.id.tvSetsJogador1)
+        var setsJogador1 = tvSetsJoga1.text.toString().toInt()
+        var tvSetsJoga2 = findViewById<TextView>(R.id.tvSetsJogador2)
+        var setsJogador2 = tvSetsJoga2.text.toString().toInt()
+        setsJogador1++
 
         vibrar(v)
-        tvPontosJogador1.text = pontosJogador1.toString()
+        tvSetsJoga1.text = setsJogador1.toString()
 
-        placar.resultado = ""+pontosJogador1+" vs "+ pontosJogador2
+        placar.resultado = ""+setsJogador1+ " x " + setsJogador2
+    }
+
+    fun alteraSets2 (v:View){
+        var tvSetsJoga1 = findViewById<TextView>(R.id.tvSetsJogador1)
+        var setsJogador1 = tvSetsJoga1.text.toString().toInt()
+        var tvSetsJoga2 = findViewById<TextView>(R.id.tvSetsJogador2)
+        var setsJogador2 = tvSetsJoga2.text.toString().toInt()
+        setsJogador2++
+
+        vibrar(v)
+        tvSetsJoga2.text = setsJogador2.toString()
+
+        placar.resultado = ""+setsJogador1+ " vs " + setsJogador2
+    }
+
+    fun alteraPlacar1 (v:View){
+//        val listaPontos = arrayOf("00","15","30","40","AD","WI")
+        var tvPontosJogador1 = findViewById<TextView>(R.id.tvPontuacaoJogador1)
+        var pontosJogador1 = tvPontosJogador1.text.toString()
+        var tvPontosJogador2 = findViewById<TextView>(R.id.tvPontuacaoJogador2)
+        var pontosJogador2 = tvPontosJogador2.text.toString()
+
+        if(pontos1<=3) {
+            pontos1++
+        }
+        else if( (pontos1>=3) and (pontos2==3) ){
+            pontos1++
+        }
+        else if( (pontos1>=3) and (pontos2==4) ){
+            pontos2--
+        }
+        if( (pontos1>=4) and ((pontos1-pontos2)>=2) ) { // caso vença o set, incrementa o set pro vencedor e zera tudo
+            alteraSets1(v)
+            zeraPontos()
+        }
+        //atualiza pontos
+        tvPontosJogador1.text = listaPontos[pontos1].toString()
+        tvPontosJogador2.text = listaPontos[pontos2].toString()
+
+        vibrar(v)
+//        tvPontosJogador1.text = incrementaPontos(pontosJogador1)
+
     }
 
     fun alteraPlacar2 (v:View){
         var tvPontosJogador1 = findViewById<TextView>(R.id.tvPontuacaoJogador1)
-        var pontosJogador1 = tvPontosJogador1.text.toString().toInt()
+        var pontosJogador1 = tvPontosJogador1.text.toString()
         var tvPontosJogador2 = findViewById<TextView>(R.id.tvPontuacaoJogador2)
-        var pontosJogador2 = tvPontosJogador2.text.toString().toInt()
-        pontosJogador2++
+        var pontosJogador2 = tvPontosJogador2.text.toString()
+
+        if(pontos2<=3) {
+            pontos2++
+        }
+        else if( (pontos2>=3) and (pontos1==3) ){
+            pontos2++
+        }
+        else if( (pontos2>=3) and (pontos1==4) ){
+            pontos1--
+        }
+        if( (pontos2>=4) and ((pontos2-pontos1)>=2) ) { // caso vença o set, incrementa o set pro vencedor e zera tudo
+            alteraSets2(v)
+            zeraPontos()
+        }
+
+        tvPontosJogador1.text = listaPontos[pontos1].toString()
+        tvPontosJogador2.text = listaPontos[pontos2].toString()
 
         vibrar(v)
-        tvPontosJogador2.text = pontosJogador2.toString()
+//        tvPontosJogador2.text = pontosJogador2.toString()
 
-        placar.resultado = ""+pontosJogador1+" vs "+ pontosJogador2
+    }
+
+    fun zeraPontos(){
+        pontos1 = 0
+        pontos2 = 0
+    }
+    fun incrementaPontos(a:String): CharSequence? {
+        var p=a
+        if (a=="00")
+            p="15"
+        else if(a=="15")
+            p="40"
+        else if(a=="40")
+            p="VA"
+        Log.v("PDM23",p.toString())
+        return (p.toString())
     }
 
     fun vibrar (v:View){

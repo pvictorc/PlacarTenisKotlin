@@ -32,21 +32,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPontuacaoJogador1" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSetsJogador1" />
 
     <TextView
-        android:id="@+id/tvPontuacaoJogador2"
+        android:id="@+id/tvSetsJogador2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="alteraPlacar2"
         android:text="0"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintVertical_bias="0.842" />
 
     <TextView
         android:id="@+id/tvNomePartida"
@@ -59,40 +58,135 @@
         android:text="Campeonato de Tênis"
         android:textSize="34sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/tvPontuacaoJogador1"
+        app:layout_constraintBottom_toTopOf="@+id/tvSetsJogador1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tvSetsJogador1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
         android:id="@+id/tvPontuacaoJogador1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="alteraPlacar1"
-        android:text="0"
+        android:text="00"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/tvSetsJogador1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
+        android:id="@+id/tvPontuacaoJogador2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alteraPlacar2"
+        android:text="00"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/tvSetsJogador1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84" />
+
+    <TextView
+        android:id="@+id/tvLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alteraPlacar1"
+        android:text="sets"
+        android:textSize="24sp"
+        android:textStyle="normal|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/tvSetsJogador1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alteraPlacar1"
+        android:text="pontos"
+        android:textSize="34sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/tvPontuacaoJogador1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
+        android:id="@+id/tvLabel4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alteraPlacar2"
+        android:text="pontos"
+        android:textSize="34sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/tvPontuacaoJogador2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.822" />
+
+    <TextView
+        android:id="@+id/tvLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alteraPlacar1"
+        android:text="sets"
+        android:textSize="24sp"
+        android:textStyle="normal|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btSalvarPlacar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/tvSetsJogador2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="52dp"
         android:text="Jogador 1"
-        app:layout_constraintBottom_toTopOf="@+id/tvPontuacaoJogador1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSetsJogador1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="52dp"
         android:text="Jogador 2"
-        app:layout_constraintBottom_toTopOf="@+id/tvPontuacaoJogador2"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSetsJogador2"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

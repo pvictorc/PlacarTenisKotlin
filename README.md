@@ -5,4 +5,6 @@
 
 <img src="/imgs/config.png" width="280">
 
+<img src="/imgs/placar.png" width="280">
+
 <img src="/imgs/history.png" width="280">

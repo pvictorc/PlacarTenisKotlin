@@ -68,7 +68,6 @@ class ConfigActivity : AppCompatActivity() {
 
         openConfig()
         initInterface()
-        getLocal()
     }
     fun saveConfig(){
         val sharedFilename = "configPlacar"
@@ -101,6 +100,7 @@ class ConfigActivity : AppCompatActivity() {
         val sw= findViewById<Switch>(R.id.swTimer)
         sw.isChecked=placar.has_timer
         // Pega a localização
+        getLocal()
     }
 
     fun updatePlacarConfig(){
@@ -132,8 +132,7 @@ class ConfigActivity : AppCompatActivity() {
                         if(location!=null){
                             Log.v("PDM23","Lat:"+location?.latitude)
 //                            sendLocationWhatsApp(location?.latitude.toString(), location?.longitude.toString())
-                            placar.localizacao =
-                                "http://maps.google.com/maps?@${location?.latitude}${location?.longitude}"
+                            placar.localizacao ="${location?.latitude},${location?.longitude}"
                             Log.v("PDM23",location.toString())
                             Log.v("PDM23","http://maps.google.com/maps?@"+location?.latitude.toString()+location?.longitude.toString())
                         }

@@ -13,7 +13,6 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcPreviousGames"
         android:layout_width="match_parent"

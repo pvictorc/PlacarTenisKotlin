@@ -23,9 +23,7 @@ import java.util.ArrayList
 
 class PlacarActivity : AppCompatActivity() {
     lateinit var placar:Placar
-//    lateinit var pontos1,pontos2: int
     lateinit var tvResultadoJogo: TextView
-    var game = 0
     val listaPontos = arrayOf("00","15","30","40","AD","WI")
     var pontos1 = 0
     var pontos2 = 0

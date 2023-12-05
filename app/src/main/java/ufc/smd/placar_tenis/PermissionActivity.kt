@@ -42,15 +42,15 @@ class PermissionActivity : AppCompatActivity(), UIEducacionalPermissao.NoticeDia
                     ).show()
                 }
             }
-        requestLocalPermissionLauncher= registerForActivityResult(
+        requestLocalPermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
                 //Localização
-                Log.v("PDM","Acesso à localização concedido")
+                Log.v("PDM23","Acesso à localização concedido")
                 fusedLocationClient.lastLocation
                     .addOnSuccessListener { location : Location? ->
-                        Log.v("PDM",location.toString())
+                        Log.v("PDM23",location.toString())
                     }
             } else {
                 Snackbar.make(
@@ -105,13 +105,20 @@ class PermissionActivity : AppCompatActivity(), UIEducacionalPermissao.NoticeDia
                 this.applicationContext,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED ->{
-                Log.v("PDM","Tem permissão de localização")
+                Log.v("PDM23","Tem permissão de localização")
                 fusedLocationClient.lastLocation
                     .addOnSuccessListener { location : Location? ->
                         if(location!=null){
-                            Log.v("PDM","Lat:"+location?.latitude)
-                            sendLocationWhatsApp(location?.latitude.toString(), location?.longitude.toString())
+                            Log.v("PDM23","Lat:"+location?.latitude)
+//                            sendLocationWhatsApp(location?.latitude.toString(), location?.longitude.toString())
+                            Log.v("PDM23",location.toString())
+                            Log.v("PDM23","http://maps.google.com/maps?@"+location?.latitude.toString()+location?.longitude.toString())
                         }
+                        Snackbar.make(
+                            findViewById(R.id.layoutPermission),
+                            "Localização OK",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
 
                     }
             }
@@ -119,7 +126,7 @@ class PermissionActivity : AppCompatActivity(), UIEducacionalPermissao.NoticeDia
             shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION) ->{
                 // Chamar a UI Educacional
                 val mensagem =
-                    "Nossa aplicação precisa acessar  a localização"
+                    "Nossa aplicação precisa acessar a localização"
                 val titulo = "Permissão de acesso a localização"
                 val codigo = 2//Código da requisição
                 val mensagemPermissao = UIEducacionalPermissao(mensagem, titulo, codigo)
@@ -150,4 +157,5 @@ class PermissionActivity : AppCompatActivity(), UIEducacionalPermissao.NoticeDia
             requestLocalPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         }
     }
+
 }

@@ -13,7 +13,6 @@ import ufc.smd.placar_tenis.R
 
 class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-
     // Criação de Novos ViewHolders
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // infla o card_previous_games
@@ -24,10 +23,11 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
 
     // Ligando o Recycler view a um View Holder
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = ItemView.findViewById(R.id.imageview)
+        val imageView: ImageView = ItemView.findViewById(R.id.imgRaq)
         val tvNomePartida: TextView = ItemView.findViewById(R.id.tvNomePartida)
         val tvResultadoJogo: TextView = ItemView.findViewById(R.id.tvResultadoJogo)
         val lnCell: LinearLayout = ItemView.findViewById(R.id.lnCell)
+        val txtLocal: TextView = ItemView.findViewById(R.id.txtLocal)
     }
 
     // faz o bind de uma ViewHolder a um Objeto da Lista
@@ -38,14 +38,14 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
         //alimentando os elementos a partir do objeto placar
         holder.tvNomePartida.text = placarAnterior.nome_partida
         holder.tvResultadoJogo.text = placarAnterior.resultado
+        holder.txtLocal.text = placarAnterior.localizacao/* ?: "teste nulo"*/
 
         holder.lnCell.setOnClickListener{
             val duration= Snackbar.LENGTH_LONG
-            val text= placarAnterior.resultadoLongo
+            val text = placarAnterior.resultadoLongo
 
             val snack= Snackbar.make(holder.lnCell,text,duration)
             snack.show()
-
         }
     }
 

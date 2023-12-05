@@ -77,6 +77,7 @@ class ConfigActivity : AppCompatActivity() {
 
         edShared.putString("matchname",placar.nome_partida)
         edShared.putBoolean("has_timer",placar.has_timer)
+        edShared.putString("localizacao",placar.localizacao)
         edShared.commit()
     }
     fun openConfig() {
@@ -131,7 +132,8 @@ class ConfigActivity : AppCompatActivity() {
                         if(location!=null){
                             Log.v("PDM23","Lat:"+location?.latitude)
 //                            sendLocationWhatsApp(location?.latitude.toString(), location?.longitude.toString())
-                            placar.localizacao = "http://maps.google.com/maps?@"+location?.latitude.toString()+location?.longitude.toString()
+                            placar.localizacao =
+                                "http://maps.google.com/maps?@${location?.latitude}${location?.longitude}"
                             Log.v("PDM23",location.toString())
                             Log.v("PDM23","http://maps.google.com/maps?@"+location?.latitude.toString()+location?.longitude.toString())
                         }

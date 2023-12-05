@@ -25,6 +25,9 @@
             android:name="ufc.smd.placar_tenis.ConfigActivity"
             android:exported="false" />
         <activity
+            android:name="ufc.smd.placar_tenis.MapActivity"
+            android:exported="false"/>
+        <activity
             android:name="ufc.smd.placar_tenis.MainActivity"
             android:exported="true">
             <intent-filter>

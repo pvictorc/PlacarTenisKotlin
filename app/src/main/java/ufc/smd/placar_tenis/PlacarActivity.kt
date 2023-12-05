@@ -19,7 +19,6 @@ import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets
-import java.util.ArrayList
 
 class PlacarActivity : AppCompatActivity() {
     lateinit var placar:Placar
@@ -34,9 +33,11 @@ class PlacarActivity : AppCompatActivity() {
         var pontos2 = 0
         placar= getIntent().getExtras()?.getSerializable("placar") as Placar
 
+        Log.v("PDM23","PlacarActivity placar.localizacao "+placar.localizacao)
         //Mudar o nome da partida
         val tvNomePartida=findViewById(R.id.tvNomePartida) as TextView
         tvNomePartida.text=placar.nome_partida
+
         ultimoJogos()
     }
 
@@ -91,7 +92,6 @@ class PlacarActivity : AppCompatActivity() {
         tvPontosJogador2.text = listaPontos[pontos2].toString()
 
         vibrar(v)
-//        tvPontosJogador1.text = incrementaPontos(pontosJogador1)
 
     }
 
@@ -119,7 +119,6 @@ class PlacarActivity : AppCompatActivity() {
         tvPontosJogador2.text = listaPontos[pontos2].toString()
 
         vibrar(v)
-//        tvPontosJogador2.text = pontosJogador2.toString()
 
     }
 
@@ -183,7 +182,7 @@ class PlacarActivity : AppCompatActivity() {
             var dis = ByteArrayInputStream(meuObjString.toByteArray(Charsets.ISO_8859_1))
             var oos = ObjectInputStream(dis)
             var placarAntigo:Placar=oos.readObject() as Placar
-            Log.v("SMD26",placar.resultado)
+            Log.v("PDM23",placar.resultado)
         }
 
         openPreviusGames(v)
@@ -198,7 +197,7 @@ class PlacarActivity : AppCompatActivity() {
             var dis = ByteArrayInputStream(matchStr.toByteArray(Charsets.ISO_8859_1))
             var oos = ObjectInputStream(dis)
             var prevPlacar:Placar = oos.readObject() as Placar
-            Log.v("PDM22", "Jogo Salvo:"+ prevPlacar.resultado)
+            Log.v("PDM23", "Jogo Salvo:"+ prevPlacar.resultado)
         }
     }
 
